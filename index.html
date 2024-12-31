@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .menu-item {
+            cursor: pointer;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .menu-item:hover {
+            background-color: #f0f0f0;
+        }
+        .content {
+            display: none;
+            margin-top: 20px;
+        }
+        .content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Restaurant Menu</h1>
+    <div class="menu">
+        <div class="menu-item" onclick="showContent('starters')">Starters</div>
+        <div class="menu-item" onclick="showContent('main-courses')">Main Courses</div>
+        <div class="menu-item" onclick="showContent('desserts')">Desserts</div>
+        <div class="menu-item" onclick="showContent('drinks')">Drinks</div>
+    </div>
+    <div id="starters" class="content">
+        <h2>Starters</h2>
+        <p>Here are some delicious starters...</p>
+    </div>
+    <div id="main-courses" class="content">
+        <h2>Main Courses</h2>
+        <p>Here are some delicious main courses...</p>
+    </div>
+    <div id="desserts" class="content">
+        <h2>Desserts</h2>
+        <p>Here are some delicious desserts...</p>
+    </div>
+    <div id="drinks" class="content">
+        <h2>Drinks</h2>
+        <p>Here are some refreshing drinks...</p>
+    </div>
+    <script>
+        function showContent(id) {
+            var contents = document.querySelectorAll('.content');
+            contents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+</html>
