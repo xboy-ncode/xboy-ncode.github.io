@@ -1,101 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Menu</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-        }
-        .menu {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .menu-item {
-            cursor: pointer;
-            padding: 10px 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            margin: 5px;
-            flex: 1 1 calc(50% - 10px);
-            text-align: center;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .menu-item:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-        .content {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.5s;
-        }
-        .content.active {
-            display: block;
-        }
-        @media (max-width: 600px) {
-            .menu-item {
-                flex: 1 1 100%;
-            }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Interactivo</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 style="text-align: center; color: #007bff;">Restaurant Menu</h1>
-    <div class="menu">
-        <div class="menu-item" onclick="showContent('starters')">Starters</div>
-        <div class="menu-item" onclick="showContent('main-courses')">Main Courses</div>
-        <div class="menu-item" onclick="showContent('desserts')">Desserts</div>
-        <div class="menu-item" onclick="showContent('drinks')">Drinks</div>
+  <div class="menu-container">
+    <div class="menu-page active" id="page-1">
+      <h1>Entradas</h1>
+      <p>Platillo 1: Descripción...</p>
+      <p>Platillo 2: Descripción...</p>
     </div>
-    <div id="starters" class="content">
-        <h2>Starters</h2>
-        <p>Here are some delicious starters...</p>
+    <div class="menu-page" id="page-2">
+      <h1>Platos Fuertes</h1>
+      <p>Platillo 3: Descripción...</p>
+      <p>Platillo 4: Descripción...</p>
     </div>
-    <div id="main-courses" class="content">
-        <h2>Main Courses</h2>
-        <p>Here are some delicious main courses...</p>
+    <div class="menu-page" id="page-3">
+      <h1>Postres</h1>
+      <p>Postre 1: Descripción...</p>
+      <p>Postre 2: Descripción...</p>
     </div>
-    <div id="desserts" class="content">
-        <h2>Desserts</h2>
-        <p>Here are some delicious desserts...</p>
-    </div>
-    <div id="drinks" class="content">
-        <h2>Drinks</h2>
-        <p>Here are some refreshing drinks...</p>
-    </div>
-    <script>
-        function showContent(id) {
-            var contents = document.querySelectorAll('.content');
-            contents.forEach(function(content) {
-                content.classList.remove('active');
-            });
-            document.getElementById(id).classList.add('active');
-        }
-
-        document.addEventListener('touchstart', function(event) {
-            var target = event.target;
-            if (target.classList.contains('menu-item')) {
-                var id = target.getAttribute('onclick').match(/'([^']+)'/)[1];
-                showContent(id);
-            }
-        });
-    </script>
+    <button class="nav-button left">◀</button>
+    <button class="nav-button right">▶</button>
+  </div>
+  
+  <script src="script.js"></script>
 </body>
 </html>
