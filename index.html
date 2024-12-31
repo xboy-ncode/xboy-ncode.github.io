@@ -27,9 +27,11 @@
             margin: 5px;
             flex: 1 1 calc(50% - 10px);
             text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
         }
         .menu-item:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
         }
         .content {
             display: none;
@@ -38,6 +40,7 @@
             background-color: white;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s;
         }
         .content.active {
             display: block;
@@ -46,6 +49,10 @@
             .menu-item {
                 flex: 1 1 100%;
             }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
