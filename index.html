@@ -7,32 +7,50 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
         }
         .menu {
             display: flex;
             justify-content: space-around;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
         .menu-item {
             cursor: pointer;
             padding: 10px 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            margin: 5px;
+            flex: 1 1 calc(50% - 10px);
+            text-align: center;
         }
         .menu-item:hover {
-            background-color: #f0f0f0;
+            background-color: #0056b3;
         }
         .content {
             display: none;
             margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .content.active {
             display: block;
         }
+        @media (max-width: 600px) {
+            .menu-item {
+                flex: 1 1 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Restaurant Menu</h1>
+    <h1 style="text-align: center; color: #007bff;">Restaurant Menu</h1>
     <div class="menu">
         <div class="menu-item" onclick="showContent('starters')">Starters</div>
         <div class="menu-item" onclick="showContent('main-courses')">Main Courses</div>
@@ -63,6 +81,14 @@
             });
             document.getElementById(id).classList.add('active');
         }
+
+        document.addEventListener('touchstart', function(event) {
+            var target = event.target;
+            if (target.classList.contains('menu-item')) {
+                var id = target.getAttribute('onclick').match(/'([^']+)'/)[1];
+                showContent(id);
+            }
+        });
     </script>
 </body>
 </html>
